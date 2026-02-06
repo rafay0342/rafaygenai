@@ -1,0 +1,91 @@
+{
+  "info": {
+    "name": "Grok Console API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Grok {{GROK_API_KEY}}"}
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/api/chat",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "chat"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"model\": \"llama3.1:8b\",\n  \"messages\": [{\"role\": \"user\", \"content\": \"Hello\"}],\n  \"stream\": true\n}"
+        }
+      }
+    },
+    {
+      "name": "Image Generation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Grok {{GROK_API_KEY}}"}
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/api/media/image",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "media", "image"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"A cinematic skyline at dusk\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Video Generation",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Content-Type", "value": "application/json"},
+          {"key": "Authorization", "value": "Grok {{GROK_API_KEY}}"}
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/api/media/video",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "media", "video"]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"A cinematic skyline at dusk\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Media File Fetch",
+      "request": {
+        "method": "GET",
+        "header": [
+          {"key": "Authorization", "value": "Grok {{GROK_API_KEY}}"}
+        ],
+        "url": {
+          "raw": "{{BASE_URL}}/api/media/file?filename={{FILENAME}}&subfolder={{SUBFOLDER}}&type={{TYPE}}",
+          "host": ["{{BASE_URL}}"],
+          "path": ["api", "media", "file"],
+          "query": [
+            {"key": "filename", "value": "{{FILENAME}}"},
+            {"key": "subfolder", "value": "{{SUBFOLDER}}"},
+            {"key": "type", "value": "{{TYPE}}"}
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {"key": "BASE_URL", "value": "http://localhost:3000"},
+    {"key": "GROK_API_KEY", "value": "YOUR_KEY"},
+    {"key": "FILENAME", "value": ""},
+    {"key": "SUBFOLDER", "value": ""},
+    {"key": "TYPE", "value": ""}
+  ]
+}
