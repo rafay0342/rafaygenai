@@ -1,0 +1,17 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A0F1B"/>
+      <stop offset="1" stop-color="#111A2B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 120) rotate(35) scale(700 420)">
+      <stop stop-color="#34D8B7" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#34D8B7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <text x="88" y="230" fill="#EAF3FF" font-size="74" font-family="Segoe UI, Arial, sans-serif" font-weight="700">RafayGen AI</text>
+  <text x="88" y="300" fill="#BFD2EC" font-size="34" font-family="Segoe UI, Arial, sans-serif">Advanced AI Studio by WaveTech Limited</text>
+  <text x="88" y="380" fill="#7CE7D2" font-size="28" font-family="Segoe UI, Arial, sans-serif">Reasoning • Code • Math • Media</text>
+</svg>
