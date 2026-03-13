@@ -48,3 +48,17 @@ This script builds the app, reloads PM2 with `ecosystem.config.cjs`, and verifie
 - This preview currently serves over HTTP on the server IP.
 - Secrets are loaded from the server-side `.env.local` copied from the existing app.
 - For a dedicated domain, update `NEXT_PUBLIC_SITE_URL` and `NEXTAUTH_URL` in `/opt/rafaygen-agent-live/.env.local` and add a matching Nginx server block.
+
+## Hostinger Node.js Hosting (hPanel)
+
+Use Hostinger hPanel Node.js Web Apps hosting for managed Node deployments.
+
+1. Create a Node.js app in hPanel and select the Node.js version.
+2. Set the app start command to `npm run start`.
+3. Deploy with Git integration by connecting the GitHub repo.
+4. Copy the auto-deploy webhook URL from hPanel and set it as the GitHub secret `HOSTINGER_DEPLOY_WEBHOOK`.
+5. GitHub Actions will trigger the webhook on pushes to `main`.
+
+Notes:
+- If your Hostinger plan does not allow the required Node version, use VPS hosting instead.
+- Keep env vars in Hostinger hPanel environment settings.

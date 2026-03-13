@@ -1,0 +1,22 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HOSTINGER_DEPLOY_WEBHOOK: ${{ secrets.HOSTINGER_DEPLOY_WEBHOOK }}
+    steps:
+      - name: Verify deploy webhook
+        run: |
+          if [ -z "$HOSTINGER_DEPLOY_WEBHOOK" ]; then
+            echo "Missing HOSTINGER_DEPLOY_WEBHOOK secret." >&2
+            exit 1
+          fi
+      - name: Trigger Hostinger deploy
+        run: |
+          curl -fsS -X POST "$HOSTINGER_DEPLOY_WEBHOOK"
