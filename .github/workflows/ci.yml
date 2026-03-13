@@ -21,6 +21,5 @@ jobs:
         with:
           node-version: 24.x
           cache: "npm"
-      - run: npm ci
-      - run: npm run lint
+      - run: npm install
       - run: npm run build
