@@ -54,11 +54,7 @@ This script builds the app, reloads PM2 with `ecosystem.config.cjs`, and verifie
 Use Hostinger hPanel Node.js Web Apps hosting for managed Node deployments.
 
 1. Create a Node.js app in hPanel and select the Node.js version.
-<<< saas-ui-supabase-hostinger
 2. Set the app start command to `npm run hostinger:start`.
-=======
-2. Set the app start command to `npm run start`.
->>> main
 3. Deploy with Git integration by connecting the GitHub repo.
 4. Copy the auto-deploy webhook URL from hPanel and set it as the GitHub secret `HOSTINGER_DEPLOY_WEBHOOK`.
 5. GitHub Actions will trigger the webhook on pushes to `main`.
