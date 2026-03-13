@@ -2,147 +2,194 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BrandAvatar } from "@/components/intellect/brand-avatar";
 import { TemplateCopyright, TemplatePageContent } from "@/components/intellect/intellect-shell";
+import { RealtimePanel } from "@/components/realtime/realtime-panel";
 
 export const metadata: Metadata = {
   title: "RafayGen Agent Dashboard",
-  description: "Unified dashboard for chat, image, voice, documentation, and subscription workflows.",
-  keywords: ["AI dashboard", "RafayGen Agent", "image generator", "voice generator", "chatbot"],
+  description: "Unified SaaS workspace for chat, media generation, and realtime operations.",
+  keywords: ["AI dashboard", "SaaS", "RafayGen Agent", "image generator", "voice generator"],
 };
 
-const dashboardCards = [
+const primaryCards = [
   {
     href: "/chatbot",
-    eyebrow: "Realtime assistant",
-    metric: "Web + tools",
+    label: "Realtime assistant",
     title: "AI Chat Workspace",
-    description: "Reasoning, coding, live search, and multi-step answers using your existing routed models.",
+    copy: "Multi-step reasoning, tool calling, and live search in one workflow.",
   },
   {
     href: "/image-generator",
-    eyebrow: "Media output",
-    metric: "Preview + download",
-    title: "Image Studio",
-    description: "Prompt-to-image generation with in-app previews, moderation, and internal download links.",
+    label: "Media studio",
+    title: "Image Generation",
+    copy: "Curated prompts, model routing, and instant previews for teams.",
   },
   {
     href: "/voicegenerator",
-    eyebrow: "Speech delivery",
-    metric: "Audio files",
-    title: "Voice Studio",
-    description: "Text-to-speech with language hints, provider routing, audio playback, and direct downloads.",
+    label: "Voice stack",
+    title: "Speech Studio",
+    copy: "Text-to-speech, downloadable assets, and voice presets at scale.",
   },
 ];
 
-const utilityCards = [
+const platformCards = [
   {
     href: "/community-feed",
     title: "Knowledge Feed",
-    description: "Browse docs and public resource pages in a branded content feed instead of stock template cards.",
+    copy: "Publish updates, docs, and community content without leaving the platform.",
   },
   {
     href: "/manage-subscription",
-    title: "Plans & Billing",
-    description: "Subscription controls, usage upgrades, and monetization-ready pricing flows for your live app.",
+    title: "Billing & Plans",
+    copy: "Control usage tiers, billing status, and upgrade flows with confidence.",
   },
   {
     href: "/docs",
-    title: "Documentation",
-    description: "Architecture, analytics, safety, monetization, and deployment guidance for RafayGen AI.",
+    title: "Operational Docs",
+    copy: "Deployment, analytics, safety, and compliance guidelines in one hub.",
   },
 ];
 
-const heroPanels = [
-  { eyebrow: "Agent mode", value: "Live", label: "Realtime routes + internal tools stay active" },
-  { eyebrow: "Media outputs", value: "Native", label: "Preview and download links remain inside your app" },
-  { eyebrow: "Operations", value: "Ready", label: "Docs, billing, moderation, and support pages stay aligned" },
+const valueProps = [
+  {
+    title: "SaaS-ready UX",
+    copy: "Consistent navigation, scannable sections, and polished responsive layouts.",
+  },
+  {
+    title: "Realtime operations",
+    copy: "Supabase change streams keep dashboards in sync with live activity.",
+  },
+  {
+    title: "Production workflows",
+    copy: "Deploy, monitor, and ship updates with built-in runbooks and CI hooks.",
+  },
 ];
 
 export default function HomePage() {
   return (
-    <TemplatePageContent className="pt-[96px]">
-      <div className="banner-badge bg_image intellect-home-banner">
-        <div className="inner">
-          <h3 className="title">RafayGen Agent for realtime chat, media generation, and branded public content</h3>
-          <p className="dsic">
-            Your existing models, moderation, live web access, docs, subscriptions, and download routes stay intact,
-            while the public UI now presents them as a RafayGen product instead of stock template content.
+    <TemplatePageContent className="saas-shell">
+      <section className="saas-hero">
+        <div className="saas-hero__copy">
+          <span className="saas-pill">RafayGen Agent SaaS</span>
+          <h1>Run your AI product with live chat, media generation, and realtime ops.</h1>
+          <p>
+            A production-ready control center for AI workflows. Manage agents, assets, and subscriptions with a
+            premium SaaS experience across every device.
           </p>
-          <div className="intellect-home-actions">
-            <Link href="/chatbot" className="rts-btn btn-blur">
+          <div className="saas-actions">
+            <Link href="/chatbot" className="saas-btn saas-btn--primary">
               Open AI Chat
             </Link>
-            <Link href="/docs" className="rts-btn btn-primary">
-              View Docs
+            <Link href="/pricing" className="saas-btn saas-btn--ghost">
+              View Plans
             </Link>
           </div>
-          <div className="intellect-home-pills">
-            <span className="intellect-home-pill">Realtime answers</span>
-            <span className="intellect-home-pill">Internal media downloads</span>
-            <span className="intellect-home-pill">AdSense-ready content pages</span>
+          <div className="saas-hero__metrics">
+            <div>
+              <strong>Live</strong>
+              <span>Agent routing + tools</span>
+            </div>
+            <div>
+              <strong>Unified</strong>
+              <span>Media + content + ops</span>
+            </div>
+            <div>
+              <strong>Secure</strong>
+              <span>Auth, billing, and usage</span>
+            </div>
           </div>
-          <div className="inner-right-iamge">
-            <div className="intellect-home-hero-visual">
-              {heroPanels.map((panel) => (
-                <div key={panel.eyebrow} className="intellect-home-hero-panel">
-                  <span className="eyebrow">{panel.eyebrow}</span>
-                  <span className="value">{panel.value}</span>
-                  <span className="label">{panel.label}</span>
+        </div>
+        <div className="saas-hero__panel">
+          <div className="saas-hero__panel-card">
+            <span className="saas-eyebrow">Operational overview</span>
+            <h3>Control every surface</h3>
+            <p>Chat, media, docs, and subscriptions stay aligned in a single dashboard.</p>
+            <div className="saas-hero__panel-grid">
+              {valueProps.map((item) => (
+                <div key={item.title} className="saas-panel-pill">
+                  <strong>{item.title}</strong>
+                  <span>{item.copy}</span>
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="search__generator mt--50">
-        <h4 className="title color-white-title-home">Welcome to RafayGen Agent</h4>
-
-        <div className="tab-content mt--50">
-          <div className="row g-5">
-            {dashboardCards.map((card) => (
-              <div key={card.href} className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                <div className="single-image-generator intellect-home-card">
-                  <div className="intellect-home-card-media">
-                    <span className="intellect-home-card-media__eyebrow">{card.eyebrow}</span>
-                    <BrandAvatar kind="assistant" label={card.title} size="lg" />
-                    <div className="intellect-home-card-media__copy">
-                      <h5>{card.title}</h5>
-                      <p className="disc">{card.description}</p>
-                    </div>
-                    <span className="intellect-home-card-media__metric">{card.metric}</span>
-                  </div>
-                  <div className="intellect-home-card-actions">
-                    <Link href={card.href} className="rts-btn btn-primary">
-                      Open
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            ))}
+      <section className="saas-section">
+        <div className="saas-section__header">
+          <div>
+            <p className="saas-eyebrow">Core workspaces</p>
+            <h2>Everything your AI team needs in one place</h2>
           </div>
+          <Link href="/docs" className="saas-link">
+            Explore documentation
+          </Link>
         </div>
-
-        <div className="row g-5 mt--10">
-          {utilityCards.map((card) => (
-            <div key={card.href} className="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-              <div className="single-image-generator intellect-home-card">
-                <div className="intellect-home-card-media">
-                  <span className="intellect-home-card-media__eyebrow">Platform</span>
-                  <BrandAvatar kind="brand" label={card.title} size="md" />
-                  <span className="intellect-home-card-media__metric">Live route</span>
-                </div>
-                <div className="intellect-home-card-actions">
-                  <h5 className="title">{card.title}</h5>
-                  <p className="disc">{card.description}</p>
-                  <Link href={card.href} className="rts-btn btn-primary">
-                    Open
-                  </Link>
-                </div>
+        <div className="saas-card-grid">
+          {primaryCards.map((card) => (
+            <Link key={card.href} href={card.href} className="saas-card">
+              <span className="saas-eyebrow">{card.label}</span>
+              <div className="saas-card__hero">
+                <BrandAvatar kind="assistant" label={card.title} size="lg" />
               </div>
-            </div>
+              <h3>{card.title}</h3>
+              <p className="saas-muted">{card.copy}</p>
+              <span className="saas-card__cta">Open workspace</span>
+            </Link>
           ))}
         </div>
-      </div>
+      </section>
+
+      <section className="saas-section saas-section--alt">
+        <div className="saas-section__header">
+          <div>
+            <p className="saas-eyebrow">Platform</p>
+            <h2>Scale content, billing, and community without friction</h2>
+          </div>
+        </div>
+        <div className="saas-card-grid saas-card-grid--compact">
+          {platformCards.map((card) => (
+            <Link key={card.href} href={card.href} className="saas-card saas-card--compact">
+              <h3>{card.title}</h3>
+              <p className="saas-muted">{card.copy}</p>
+              <span className="saas-card__cta">Open</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="saas-section">
+        <div className="saas-section__header">
+          <div>
+            <p className="saas-eyebrow">Realtime</p>
+            <h2>Live telemetry with external DB sync</h2>
+          </div>
+        </div>
+        <div className="saas-grid">
+          <RealtimePanel />
+          <div className="saas-card saas-card--realtime">
+            <div className="saas-card__header">
+              <div>
+                <p className="saas-eyebrow">Persistence</p>
+                <h3>Supabase storage & workflows</h3>
+                <p className="saas-muted">
+                  Store generated assets, connect workflows, and keep realtime pipelines reliable.
+                </p>
+              </div>
+            </div>
+            <div className="saas-card__body">
+              <ul className="saas-list">
+                <li>Secure storage buckets for media assets.</li>
+                <li>Change streams for job status updates.</li>
+                <li>Websocket-ready integrations for dashboards.</li>
+              </ul>
+              <Link href="/docs" className="saas-btn saas-btn--ghost">
+                View data guide
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <TemplateCopyright />
     </TemplatePageContent>
